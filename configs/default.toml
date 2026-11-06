@@ -1,0 +1,120 @@
+# 所有实验参数集中配置；凭据只从环境变量或显式 .env 加载。
+[paths]
+data_dir = "datas"
+output_dir = "artifacts"
+contracts_file = "future_contract.pkl"
+
+[environment]
+lookback = 750
+short_window = 5
+long_window = 20
+spread_lags = 5
+hedge_refresh_days = 180
+commission_per_leg = 0.25
+bollinger_width = 2.0
+numerical_epsilon = 1e-8
+
+[network]
+hidden_sizes = [60, 120, 60, 30, 10]
+activation = "relu"
+
+[agent]
+device = "auto"
+gamma = 0.90
+learning_rate = 0.00001
+epsilon_start = 1.0
+epsilon_end = 1e-9
+epsilon_decay = 4000.0
+batch_size = 64
+replay_capacity = 10000
+gradient_clip = 10.0
+
+[training]
+seed = 41
+episodes = 100
+target_update_episodes = 10
+patience = 20
+min_improvement = 0.0
+
+[walk_forward]
+train_size = 940
+validation_size = 60
+test_size = 120
+significance = 0.05
+
+[backtest]
+initial_cash = 20000.0
+commission_per_contract = 1.2
+base_quantity = 1.0
+liquidate_at_end = true
+annualization = 252
+risk_free_rate = 0.0
+
+[research]
+primary_pair = ["CS", "C"]
+run_walk_forward = false
+
+# multiplier=1 和允许小数头寸延续旧研究口径，不代表真实交易所合约规格。
+[[instruments]]
+symbol = "A"
+name = "豆一"
+exchange = "DCE"
+data_file = "ADomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "B"
+name = "豆二"
+exchange = "DCE"
+data_file = "BDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "JD"
+name = "鸡蛋"
+exchange = "DCE"
+data_file = "JDDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "M"
+name = "豆粕"
+exchange = "DCE"
+data_file = "MDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "P"
+name = "棕榈油"
+exchange = "DCE"
+data_file = "PDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "Y"
+name = "豆油"
+exchange = "DCE"
+data_file = "YDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "C"
+name = "玉米"
+exchange = "DCE"
+data_file = "CDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1
+
+[[instruments]]
+symbol = "CS"
+name = "玉米淀粉"
+exchange = "DCE"
+data_file = "CSDomainData.pkl"
+multiplier = 1.0
+margin_rate = 0.1

@@ -1,0 +1,39 @@
+[build-system]
+requires = ["hatchling>=1.27,<2"]
+build-backend = "hatchling.build"
+
+[project]
+name = "rl-pairtrading"
+version = "0.2.0"
+description = "Configurable DQN futures pair-trading research toolkit"
+readme = "README.md"
+requires-python = ">=3.11,<3.15"
+dependencies = [
+    "numpy>=2.0,<3",
+    "pandas>=2.2,<4",
+    "pydantic>=2.10,<3",
+    "pydantic-settings>=2.7,<3",
+    "statsmodels>=0.14.4,<0.15",
+    "torch>=2.6,<3",
+]
+
+[project.optional-dependencies]
+notebook = ["ipykernel>=6.29,<8", "jupyterlab>=4.3,<5", "matplotlib>=3.9,<4"]
+tushare = ["tushare>=1.4,<2"]
+
+[dependency-groups]
+dev = ["pytest>=8.3,<10", "ruff>=0.11,<1", "nbformat>=5.10,<6", "nbclient>=0.10,<1"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/rl_pairtrading"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 100
+extend-exclude = ["artifacts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]

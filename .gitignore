@@ -1,0 +1,14 @@
+__pycache__/
+*.py[oc]
+.pytest_cache/
+.ruff_cache/
+build/
+dist/
+*.egg-info/
+.venv/
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+.DS_Store
+artifacts/
